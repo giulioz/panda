@@ -1,0 +1,20 @@
+## common functions ##
+
+PWD = $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+DMT_BIN_DIR = $(PWD)/bin
+DMT_ALGO_DIR = $(PWD)/algo
+DMT_COMMON_DIR = $(PWD)/common
+DMT_INC = $(PWD)/common/c/inc
+DMT_C_LIB_DIR = $(PWD)/lib/clib
+DMT_C_LIBS = $(subst $(DMT_COMMON_DIR)/c/src,$(DMT_C_LIB_DIR), $(subst .cc,.o,$(wildcard $(DMT_COMMON_DIR)/c/src/*.cc)) )
+DMT_PY_LIB_DIR = $(PWD)/lib/pylib
+DMT_PY_LIB_NAME=DMTCommon
+
+
+## common rules ##
+DMT_COMMON:
+	@echo "### -----------------------------------"
+	@echo "### Building - $@ - :"
+	$(MAKE) -e -C $(DMT_COMMON_DIR) all
+	@echo "### End Building -" $@ "- ."
+	@echo "### -----------------------------------"

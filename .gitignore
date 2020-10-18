@@ -1,0 +1,6 @@
+tmp-*
+.DS_Store
+bin/*
+!bin/*.dat
+!bin/*.txt
+lib
